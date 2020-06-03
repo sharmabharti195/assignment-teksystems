@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "assignment-teksystems"
+    }
+  },
+  "defaultProject": "assignment-teksystems",
+  "cli": {
+    "analytics": "626f8b2c-64a1-4527-83b8-e133bf3bc32f"
+  }
 }
