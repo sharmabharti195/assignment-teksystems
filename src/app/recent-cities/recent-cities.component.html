@@ -1,0 +1,22 @@
+<div class="input-group">
+	<input type="search" nam="city" placeholder="Enter a city" [(ngModel)]="cityname" class="form-control">
+	<div class="input-group-append">
+		<button class="btn btn-default" (click)="getCityWeather(cityname)">+</button>
+	</div>
+</div>
+<div class="text-muted small border-bottom">Recent locations</div>
+<ul class="list-group list-group-flush">
+	<li class="list-group-item px-2" [ngClass] *ngFor="let city of recentCities;let i=index">
+		<a (click)="selectCity(city)" class="clickable">
+			<span>{{city.name}} - {{city.main.temp}} {{city.weather[0].main}}</span>
+			<img src="{{iconUrl}}/{{city.weather[0].icon}}.png" alt="weather" width="28">
+		</a>
+		<span class="float-right">
+			<img src="/assets/{{(process && selectedCityName === city.name)? 'refresh.gif' : 'refresh.png'}}" alt="Refresh" class="mr-3 clickable" width="24" (click)="refreshCity(city.name)">
+			<img src="/assets/close.png" alt="Refresh" class="clickable" width="16" (click)="removeCity(i)">
+		</span>
+	</li>
+</ul>
+<ng-container *ngIf="recentCities.length != 0">
+	<button class="btn btn-secondary btn-sm float-right mt-3 px-5" (click)="clearAllCities()">Clear</button>
+</ng-container>

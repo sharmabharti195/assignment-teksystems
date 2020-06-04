@@ -1,0 +1,32 @@
+<div class="px-3">
+  <ng-container *ngIf="selectedCityDetail.id; else selectCity">
+    <h2>
+      {{(selectedCityDetail)?.name}} 
+      <span class="float-right">
+        <img src="/assets/{{(process)? 'refresh.gif' : 'refresh.png'}}" alt="Refresh" class="mr-3 clickable" width="24" (click)="refreshWeatherDetail()">
+      </span>
+    </h2>
+    <div class="d-flex">
+      <img src="{{iconUrl}}/{{selectedCityDetail.weather[0].icon}}@4x.png" alt="">
+      <div class="col-4">
+        <p> {{selectedCityDetail.main.temp}} </p>
+        <p> {{selectedCityDetail.weather[0].main}} </p>
+        <p> Wind: {{selectedCityDetail.wind.speed}} {{selectedCityDetail.wind.deg}} </p>
+        <p> Pressure {{selectedCityDetail.main.pressure}} </p>
+      </div>
+    </div>
+    <div class="row">
+      <ng-container *ngFor="let dayWeather of weatherForecastList.list">
+        <div class="col-2 text-center">
+          <div>{{dayWeather.dt*1000 | date:'dd'}}</div>
+          <div>{{dayWeather.dt*1000 | date:'EEE'}}</div>
+          <img src="{{iconUrl}}/{{dayWeather.weather[0].icon}}.png" alt="">
+          <div>{{dayWeather.dt | date:'EEE'}}</div>
+        </div>
+      </ng-container>
+    </div>
+  </ng-container>
+  <ng-template #selectCity>
+    Enter and select your city to see weather forecast.
+  </ng-template>
+</div>
