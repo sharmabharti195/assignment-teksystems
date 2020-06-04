@@ -1,5 +1,5 @@
 <div class="input-group">
-	<input type="search" nam="city" placeholder="Enter a city" [(ngModel)]="cityname" class="form-control">
+	<input type="search" nam="city" placeholder="Enter city name" [(ngModel)]="cityname" class="form-control">
 	<div class="input-group-append">
 		<button class="btn btn-default" (click)="getCityWeather(cityname)">+</button>
 	</div>
@@ -12,7 +12,7 @@
 			<img src="{{iconUrl}}/{{city.weather[0].icon}}.png" alt="weather" width="28">
 		</a>
 		<span class="float-right">
-			<img src="/assets/{{(process && selectedCityName === city.name)? 'refresh.gif' : 'refresh.png'}}" alt="Refresh" class="mr-3 clickable" width="24" (click)="refreshCity(city.name)">
+			<img src="/assets/{{(process && selectedCityName === city.name)? 'refresh.gif' : 'refresh.png'}}" alt="Refresh" class="mr-3 clickable" width="24" (click)="refreshCityWeather(city.name)">
 			<img src="/assets/close.png" alt="Refresh" class="clickable" width="16" (click)="removeCity(i)">
 		</span>
 	</li>

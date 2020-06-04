@@ -55,7 +55,7 @@ export class RecentCitiesComponent implements OnInit {
     this.weatherService.selectedCity.next(cityDetail);
   }
 
-  refreshCity(cityname) {
+  refreshCityWeather(cityname) {
     this.selectedCityName = cityname;
     this.process = true;
     this.weatherService.getCityWeather(cityname);
